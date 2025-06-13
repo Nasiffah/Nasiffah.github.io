@@ -1,0 +1,188 @@
+<div>
+  <header class="arm-header" id="site-header">
+    <div class="container">
+      <div class="arm-header-inner">
+        <a href="/" class="arm-logo arm-logo-title-web">
+          <span>NS</span>{{ profile.fullName }}</a
+        >
+        <a href="/" class="arm-logo arm-logo-title-mobile">
+          <span>NS</span>{{ profile.shortName }}</a
+        >
+        <ul class="arm-social">
+          <li>
+            <a [href]="profile.social.linkedin" target="_blank"
+              ><i class="ri-linkedin-fill"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+</div>
+<div class="arm-banner" id="bannerData" #bannerData>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+        <figure>
+          <img
+            class="arm-logo-image"
+            width="853"
+            height="845"
+            ngSrc="assets/images/profile.png"
+            priority
+            alt="Profile Image"
+          />
+        </figure>
+      </div>
+      <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 col-xxl-7">
+        <section>
+          <h1>
+            <span>HI THERE</span>
+            <div [innerHTML]="profile.title"></div>
+          </h1>
+          <ul class="arm-numbervalulist">
+            <li>
+              <strong>{{ profile.count.experience }}+</strong>
+              <span>Years of Experience</span>
+            </li>
+            <li>
+              <strong>{{ profile.count.projects }}+</strong>
+              <span>Projects</span>
+            </li>
+            <li>
+              <strong>{{ profile.count.client }}+</strong>
+              <span>Clients</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="arm-about-section" id="aboutData" #aboutData>
+  <div class="container">
+    <section>
+      <h2 class="arm-heading">PROFESSIONAL SUMMARY</h2>
+      <div [innerHTML]="profile.aboutMe"></div>
+    </section>
+  </div>
+</div>
+
+<div class="arm-experience-section" id="experienceData" #experienceData>
+  <div class="container">
+    <h2 class="arm-heading">Work Experience</h2>
+    <div class="row arm-experience-list">
+      <div
+        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-5"
+        *ngFor="let experience of profile.experience"
+      >
+        <section>
+          <span class="arm-year">{{ experience.period }}</span>
+          <h3 class="arm-officename">{{ experience.title }}</h3>
+          <span class="arm-department">{{ experience.location }}</span>
+          <ul>
+            <li *ngFor="let item of experience.description">{{ item }}</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="arm-experience-section" id="educationData" #educationData>
+  <div class="container">
+    <h2 class="arm-heading">Education</h2>
+    <div class="row arm-experience-list">
+      <div
+        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-5 arm-box"
+        *ngFor="let education of profile.education"
+      >
+        <section>
+          <span class="arm-year">{{ education.period }}</span>
+          <h3 class="arm-officename">{{ education.location }}</h3>
+          <span class="arm-department">{{ education.title }}</span>
+          <p>GPA: {{ education.value }}</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="arm-skills-section" id="awardData" #awardData>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+        <h2 class="arm-heading">Awards & Certifications</h2>
+        <ul class="arm-award">
+          <li *ngFor="let award of profile.award">
+            <strong>{{ award.title }}</strong> <br />
+            <p>{{ award.description }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="arm-skills-section" id="skillsData" #skillsData>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+        <h2 class="arm-heading">Core Skills</h2>
+        <ul class="arm-skills-list">
+          <li *ngFor="let skills of profile.coreSkills">{{ skills }}</li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+        <h2 class="arm-heading">Tools</h2>
+        <ul class="arm-workflow-list">
+          <li *ngFor="let workflow of profile.tools">
+            {{ workflow }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="arm-work-section">
+  <div class="container">
+    <h2 class="arm-heading" id="latestWorkTitle" #latestWorkTitle>
+      Latest works
+    </h2>
+    <div class="arm-work-list-section">
+      <div
+        class="arm-work-list"
+        *ngFor="let latestWork of profile.latestWork; let i = index"
+        id="latestWorkData{{ i }}"
+        #latestWorkData{{i}}
+      >
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 col-xxl-7">
+            <section>
+              <h3 class="arm-work-tilte">{{ latestWork.title }}</h3>
+              <p>
+                {{ latestWork.description }}
+              </p>
+              <a [href]="latestWork.link" class="arm-button" target="_blank"
+                >See Project</a
+              >
+            </section>
+          </div>
+          <div
+            class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 d-flex align-items-center"
+          >
+            <figure>
+              <img
+                [src]="latestWork.picture"
+                class="arm-logo-image"
+                loading="lazy"
+                alt="Latest Work"
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
