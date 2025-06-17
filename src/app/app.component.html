@@ -147,42 +147,16 @@
 
 <div class="arm-work-section">
   <div class="container">
-    <h2 class="arm-heading" id="latestWorkTitle" #latestWorkTitle>
-      Latest works
-    </h2>
+    <h2 class="arm-heading" id="latestWorkTitle" #latestWorkTitle>Portfolio</h2>
     <div class="arm-work-list-section">
-      <div
-        class="arm-work-list"
-        *ngFor="let latestWork of profile.latestWork; let i = index"
-        id="latestWorkData{{ i }}"
-        #latestWorkData{{i}}
-      >
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 col-xxl-7">
-            <section>
-              <h3 class="arm-work-tilte">{{ latestWork.title }}</h3>
-              <p>
-                {{ latestWork.description }}
-              </p>
-              <a [href]="latestWork.link" class="arm-button" target="_blank"
-                >See Project</a
-              >
-            </section>
-          </div>
-          <div
-            class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5 d-flex align-items-center"
-          >
-            <figure>
-              <img
-                [src]="latestWork.picture"
-                class="arm-logo-image"
-                loading="lazy"
-                alt="Latest Work"
-              />
-            </figure>
-          </div>
-        </div>
-      </div>
+      <iframe
+        src="https://docs.google.com/presentation/d/e/2PACX-1vRuPW0t8buBBno02s90jd4Vaa5ksrvtqdKbhaHzD4fMW4LnOgyeKEb9vrA-5A53NA/pubembed?start=false&loop=false&delayms=3000"
+        frameborder="0"
+        class="portfolio-iframe"
+        allowfullscreen="true"
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+      ></iframe>
     </div>
   </div>
 </div>

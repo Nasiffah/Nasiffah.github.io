@@ -12,11 +12,20 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 import html2canvas from 'html2canvas';
 import { concatMap, from } from 'rxjs';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { SafePipe } from './safe.pipe';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HttpClientModule, NgOptimizedImage],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HttpClientModule,
+    NgOptimizedImage,
+    PdfViewerModule,
+    SafePipe,
+  ],
   providers: [AppRepository, AppService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -25,29 +34,21 @@ export class AppComponent {
   public profile: ProfileCollection = DataCollection;
   isLoading = false;
   isLoadingNumber: number = this.profile.latestWork.length;
+  pdfSrc = 'assets/portfolio.pdf';
+  page = 1;
+  totalPages = 0;
+
   constructor() {}
 
-  downloadNewResume() {
-    window.open(this.profile.resumeLink, '_blank');
+  onPdfLoadComplete(pdf: any) {
+    this.totalPages = pdf.numPages;
   }
 
-  copyToClipboard(val: string) {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = val;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-    Swal.fire({
-      position: 'top',
-      text: 'Phone Number Copied',
-      showConfirmButton: false,
-      timer: 1500,
-    });
+  nextPage() {
+    if (this.page < this.totalPages) this.page++;
+  }
+
+  prevPage() {
+    if (this.page > 1) this.page--;
   }
 }

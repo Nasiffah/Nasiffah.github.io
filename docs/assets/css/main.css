@@ -589,21 +589,21 @@ span.arm-department {
     flex-direction: column;
   }
   .arm-box {
-	padding: 25px;
+    padding: 25px;
   }
 
   .arm-officename {
-	font-size: 20px;
+    font-size: 20px;
   }
   .arm-department {
-	font-size: 16px;
+    font-size: 16px;
   }
   .arm-award {
-	padding: 25px;
-	font-size: 14px;
+    padding: 25px;
+    font-size: 14px;
   }
   .arm-about-section {
-	padding: 30px;
+    padding: 30px;
   }
   .arm-header,
   .arm-header.arm-fixed-header {
@@ -645,7 +645,7 @@ span.arm-department {
 
   .arm-numbervalulist li {
     margin-right: 30px;
-	margin-bottom: 10px;
+    margin-bottom: 10px;
   }
 
   .arm-numbervalulist strong {
@@ -817,5 +817,17 @@ span.arm-department {
 
   40% {
     bottom: 0px;
+  }
+}
+
+.portfolio-iframe {
+  width: 100%;
+  height: 765px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-iframe {
+    width: 100%;
+    height: 220px;
   }
 }
